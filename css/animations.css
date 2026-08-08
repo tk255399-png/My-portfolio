@@ -1,0 +1,106 @@
+/* ==========================================================================
+   PRINCE SINGH - ANIMATIONS & SCROLL REVEALS
+   IntersectionObserver reveal effects, keyframes, transitions
+   ========================================================================== */
+
+/* Base hidden state for scroll reveals */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+/* Reveal Variations */
+.reveal-fade-up {
+  transform: translateY(40px);
+}
+
+.reveal-slide-left {
+  transform: translateX(-50px);
+}
+
+.reveal-slide-right {
+  transform: translateX(50px);
+}
+
+.reveal-scale-up {
+  transform: scale(0.92);
+}
+
+.reveal-blur {
+  filter: blur(12px);
+  transform: translateY(20px);
+}
+
+/* Active revealed state */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+  filter: blur(0);
+}
+
+/* Stagger Delays for child elements */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* Pulsing Red Neon Glow Keyframe */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 51, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 51, 0, 0.45);
+  }
+}
+
+/* Subtle Shimmer Animation */
+@keyframes textShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #ffffff 0%, #ff6600 50%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
+
+/* Floating animation for badge icons */
+@keyframes gentleBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.bobbing {
+  animation: gentleBob 3s ease-in-out infinite;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  
+  .floating-profile-card {
+    animation: none !important;
+  }
+
+  .bobbing {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tharani K — Creative Frontend Developer & UI Designer. Building modern, interactive, and production-quality web experiences with clean code and high-end design aesthetics.">
+  <meta name="keywords" content="Tharani K, Tharani, Frontend Developer, Web Designer, Portfolio, JavaScript, Next.js, React, TypeScript, Glassmorphism, UI/UX">
+  <meta name="author" content="Tharani K">
+  <title>THARANI K — Creative Frontend Developer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Ambient Dark Background Glow & Noise Texture -->
+  <div class="background-glow"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Custom Cursor Spotlight Follower -->
+  <div id="cursor-spotlight"></div>
+
+  <!-- ==========================================================================
+     1. INTRO / LOADING SCREEN
+     ========================================================================== -->
+  <div id="loader-screen">
+    <div class="loader-top-bar">
+      <div class="loader-icon-btn">★</div>
+      <div class="loader-icon-btn">✦</div>
+      <div class="loader-icon-btn">●</div>
+    </div>
+
+    <div class="loader-content">
+      <p class="loader-subtitle">Welcome to my</p>
+      <h1 class="loader-title">Portfolio Website</h1>
+    </div>
+
+    <div class="loader-bottom-bar">
+      <div class="loader-progress-track">
+        <div id="loader-progress-bar" class="loader-progress-bar"></div>
+      </div>
+      <div class="loader-counter-row">
+        <span>INITIALIZING EXPERIENCE</span>
+        <span id="loader-counter" class="loader-counter">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+     2. NAVIGATION BAR
+     ========================================================================== -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-brand">
+        THARANI.K<span class="brand-dot"></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">HOME</a></li>
+        <li><a href="#about" class="nav-link">ABOUT</a></li>
+        <li><a href="#showcase" class="nav-link">PROJECTS</a></li>
+        <li><a href="#contact" class="nav-link">CONTACT</a></li>
+      </ul>
+
+      <div class="nav-right-widget">
+        <div class="digital-clock-pill">
+          <span class="clock-live-dot"></span>
+          <span id="digital-clock">00:00:00 IST</span>
+        </div>
+        <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+    <a href="#home" class="mobile-nav-link">HOME</a>
+    <a href="#about" class="mobile-nav-link">ABOUT</a>
+    <a href="#showcase" class="mobile-nav-link">PROJECTS</a>
+    <a href="#contact" class="mobile-nav-link">CONTACT</a>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <main>
+
+    <!-- ==========================================================================
+       3. HERO SECTION
+       ========================================================================== -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-left-col">
+            <!-- Developer Portrait Background filling the exact left rectangle -->
+            <div class="hero-portrait-frame">
+              <img src="assets/images/prince_portrait.png" alt="Tharani K Developer Portrait" class="hero-portrait-img">
+            </div>
+
+            <div class="hero-big-title-wrap reveal reveal-fade-up">
+              <h1 class="hero-big-title">THARANI</h1>
+            </div>
+          </div>
+
+          <div class="hero-right-col">
+            <h2 class="hero-serif-phrase reveal reveal-slide-right delay-1">
+              Creating<br>
+              Websites<br>
+              That Feel<br>
+              Alive.
+            </h2>
+
+            <p class="hero-description reveal reveal-fade-up delay-2">
+              Turning creative ideas into interactive and high-quality web experiences. Focused on clean code, modern visual language, and performance.
+            </p>
+
+            <div class="reveal reveal-fade-up delay-3">
+              <a href="#showcase" class="btn-primary">
+                <span>VIEW PROJECTS</span>
+                <svg class="btn-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       4. FRONTEND DEVELOPER SECTION & FLOATING PROFILE CARD
+       ========================================================================== -->
+    <section class="frontend-dev-section">
+      <div class="container">
+        <div class="frontend-grid">
+
+          <div class="frontend-left-col">
+            <div class="available-badge reveal reveal-fade-up">+ AVAILABLE FOR WORK |</div>
+
+            <h2 class="section-oversized-heading reveal reveal-fade-up">
+              <span class="heading-white">Frontend</span>
+              <span class="heading-dim">Developer</span>
+            </h2>
+
+            <p class="frontend-subtext reveal reveal-fade-up delay-1">
+              Building modern websites with clean, responsive, elegant interfaces. Turning ideas and designs into engaging digital experiences with obsessive attention to detail.
+            </p>
+
+            <div class="tech-badges-row reveal reveal-fade-up delay-2">
+              <span class="tech-badge">Next.js</span>
+              <span class="tech-badge">React.js</span>
+              <span class="tech-badge">TypeScript</span>
+        
+            </div>
+
+            <div class="cta-button-group reveal reveal-fade-up delay-3">
+              <button id="toggle-card-btn" class="btn-primary btn-toggle-card" type="button">
+                <span id="toggle-card-text">HIDE CARD</span>
+              </button>
+              <a href="#about" class="btn-secondary">ABOUT ME</a>
+            </div>
+          </div>
+
+          <!-- Hanging Lanyard & Profile ID Card -->
+          <div class="floating-card-wrap reveal reveal-scale-up delay-2">
+            <div id="lanyard-container" class="lanyard-container card-locked">
+             
+              <div class="lanyard-clip">
+                <div class="clip-ring"></div>
+                <div class="clip-hook"></div>
+              </div>
+
+              <!-- Physical Hanging Badge -->
+              <div id="draggable-card" class="hanging-id-card draggable-card">
+                <div class="card-hole-ring"></div>
+                <div class="card-image-box">
+                  <img src="assets/images/prince_portrait.png" alt="Tharani K Profile" draggable="false">
+                </div>
+                <div class="card-signature-footer">
+                  <div class="card-sig-left">
+                    <span class="sig-label">Name</span>
+                    <span class="sig-name">Tharani K</span>
+                  </div>
+                  <span class="card-status-chip">CREATIVE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       5. ABOUT MYSELF SECTION
+       ========================================================================== -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="section-centered-title reveal reveal-fade-up">About Myself</h2>
+
+        <div class="glass-container reveal reveal-blur">
+          <div class="about-bio-grid">
+            <p>
+              I'm currently a passionate developer focused on creating modern and interactive digital experiences. I enjoy transforming creative ideas into functional websites and applications while paying close attention to design, performance, and user experience.
+            </p>
+            <p>
+              My goal is to build meaningful digital products that combine beautiful interfaces with clean and efficient technology. I am constantly learning new technologies and improving my skills in frontend development, UI design, and modern web experiences.
+            </p>
+          </div>
+
+          <div class="about-stats-row">
+            <div class="stat-item">
+              <div class="stat-number">3th Year</div>
+              <div class="stat-label">College Student</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5<span>+</span></div>
+              <div class="stat-label">Projects Completed</div>
+          
+          </div>
+
+          <div class="about-btn-center">
+            <button id="download-resume-btn" type="button" class="btn-primary">
+              <span>DOWNLOAD RESUME</span>
+              <svg class="btn-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. PORTFOLIO SHOWCASE
+       ========================================================================== -->
+    <section id="showcase" class="portfolio-section">
+      <div class="container">
+        <div class="portfolio-header">
+          <h2 class="section-centered-title reveal reveal-fade-up" style="margin-bottom: 0;">MY PROJECTS</h2>
+
+          <!-- Category Filter Pills Segmented Control -->
+          <div class="filter-segmented-control reveal reveal-fade-up delay-1">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="projects">Projects</button>
+            <button class="filter-btn" data-filter="websites">Websites</button>
+            <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+          </div>
+        </div>
+
+        <!-- Responsive Project Grid -->
+        <div class="projects-grid">
+
+          <!-- 01 Online Exam Portal -->
+          <div class="project-card reveal reveal-fade-up delay-1" data-category="projects" data-project-id="01">
+            <div class="project-img-box">
+              <img src="assets/images/project_online_exam.jpg" alt="Online Exam Portal Project">
+              <div class="project-img-overlay"></div>
+            </div>
+            <div class="project-details">
+              <div>
+                <div class="project-meta-row">
+                  <span class="project-index">01</span>
+                  <span class="project-category-tag">Projects</span>
+                </div>
+                <h3 class="project-title">Online Exam Portal</h3>
+                <p class="project-desc">Comprehensive online examination & assessment portal featuring automated test grading and countdown timer.</p>
+              </div>
+              <div class="project-footer">
+                <span class="project-tech-list">HTML • CSS • JS</span>
+                <div class="project-arrow-btn">➜</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Weather App -->
+          <div class="project-card reveal reveal-fade-up delay-2" data-category="websites" data-project-id="02">
+            <div class="project-img-box">
+              <img src="assets/images/project_weather_app.jpg" alt="Weather App Project">
+              <div class="project-img-overlay"></div>
+            </div>
+            <div class="project-details">
+              <div>
+                <div class="project-meta-row">
+                  <span class="project-index">02</span>
+                  <span class="project-category-tag">Websites</span>
+                </div>
+                <h3 class="project-title">Weather App</h3>
+                <p class="project-desc">Interactive live weather forecast web application featuring city location search and climate metrics.</p>
+              </div>
+              <div class="project-footer">
+                <span class="project-tech-list">JS • Weather API</span>
+                <div class="project-arrow-btn">➜</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Task Manager -->
+          <div class="project-card reveal reveal-fade-up delay-3" data-category="projects" data-project-id="03">
+            <div class="project-img-box">
+              <img src="assets/images/project_task_manager.jpg" alt="Task Manager Project">
+              <div class="project-img-overlay"></div>
+            </div>
+            <div class="project-details">
+              <div>
+                <div class="project-meta-row">
+                  <span class="project-index">03</span>
+                  <span class="project-category-tag">Projects</span>
+                </div>
+                <h3 class="project-title">Task Manager</h3>
+                <p class="project-desc">Modern task & productivity management web app with drag-and-drop Kanban columns and progress metrics.</p>
+              </div>
+              <div class="project-footer">
+                <span class="project-tech-list">JS • LocalStorage</span>
+                <div class="project-arrow-btn">➜</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Mahendra CSE Portal -->
+          <div class="project-card reveal reveal-fade-up delay-1" data-category="websites" data-project-id="04">
+            <div class="project-img-box">
+              <img src="assets/images/project_mahendra_portal.jpg" alt="Mahendra CSE Portal Project">
+              <div class="project-img-overlay"></div>
+            </div>
+            <div class="project-details">
+              <div>
+                <div class="project-meta-row">
+                  <span class="project-index">04</span>
+                  <span class="project-category-tag">Websites</span>
+                </div>
+                <h3 class="project-title">Mahendra CSE Portal</h3>
+                <p class="project-desc">Academic department portal for Computer Science & Engineering students featuring study resources and notice board.</p>
+              </div>
+              <div class="project-footer">
+                <span class="project-tech-list">HTML • CSS • PHP</span>
+                <div class="project-arrow-btn">➜</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 Personal Portfolio -->
+          <div class="project-card reveal reveal-fade-up delay-2" data-category="websites" data-project-id="05">
+            <div class="project-img-box">
+              <img src="assets/images/project_portfolio.jpg" alt="Personal Portfolio Project">
+              <div class="project-img-overlay"></div>
+            </div>
+            <div class="project-details">
+              <div>
+                <div class="project-meta-row">
+                  <span class="project-index">05</span>
+                  <span class="project-category-tag">Websites</span>
+                </div>
+                <h3 class="project-title">Personal Portfolio</h3>
+                <p class="project-desc">Futuristic interactive creative developer portfolio with custom cursor spotlight and transparent portrait cutout.</p>
+              </div>
+              <div class="project-footer">
+                <span class="project-tech-list">HTML • CSS • JS</span>
+                <div class="project-arrow-btn">➜</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 AI Assistant UI -->
+          <div class="project-card reveal reveal-fade-up delay-3" data-category="ui-ux" data-project-id="06">
+            <div class="project-img-box">
+              <img src="assets/images/project_ai.jpg" alt="AI Assistant UI Project">
+              <div class="project-img-overlay"></div>
+            </div>
+            <div class="project-details">
+              <div>
+                <div class="project-meta-row">
+                  <span class="project-index">06</span>
+                  <span class="project-category-tag">UI/UX</span>
+                </div>
+                <h3 class="project-title">AI Assistant UI</h3>
+                <p class="project-desc">Generative AI creative content studio interface featuring dark code widgets and prompt builder controls.</p>
+              </div>
+              <div class="project-footer">
+                <span class="project-tech-list">React • Figma</span>
+                <div class="project-arrow-btn">➜</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Detail Pop-up -->
+    <div id="project-modal" class="modal-backdrop">
+      <div class="modal-content-card">
+        <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+        <div class="modal-img-box">
+          <img id="modal-img" src="" alt="Project Preview">
+        </div>
+        <div class="modal-body">
+          <h3 id="modal-title" class="modal-title">Project Title</h3>
+          <p id="modal-desc" class="modal-desc">Project Description</p>
+          <div style="font-size: 0.85rem; color: var(--accent-red); font-family: monospace;" id="modal-tech">Tech Stack</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+       7. TECHNOLOGY / SKILLS GRID
+       ========================================================================== -->
+    <section class="tech-section">
+      <div class="container">
+        <h2 class="section-centered-title reveal reveal-fade-up">Tech Stack</h2>
+
+        <div class="tech-grid">
+
+          <div class="tech-card reveal reveal-scale-up">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2L2 19.5h20L12 2zm0 4.2l6.8 11.8H5.2L12 6.2z"/></svg>
+            <span class="tech-name">HTML5</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up delay-1">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M5 3h14l-1.5 17L12 22l-5.5-2L5 3zm11.5 4h-9l.3 3.5h8.4l-.5 6-3.7 1.3-3.7-1.3-.2-3H6.2l.4 5.5 5.4 2 5.4-2 1.1-12.5z"/></svg>
+            <span class="tech-name">CSS3</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up delay-2">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm14.5 13.5v-7h-2v4.5H14V9.5h-2v7.5h5.5zM8.5 16.5c1.4 0 2.5-1.1 2.5-2.5V9.5h-2v4.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V9.5h-2v4.5c0 1.4 1.1 2.5 2.5 2.5z"/></svg>
+            <span class="tech-name">JavaScript</span>
+          </div>
+
+
+          <div class="tech-card reveal reveal-scale-up">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-11h2v6h-2V9zm0 8h2v2h-2v-2z"/></svg>
+            <span class="tech-name">Next.js</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up delay-1">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/></svg>
+            <span class="tech-name">React</span>
+          </div>
+
+
+          <div class="tech-card reveal reveal-scale-up delay-3">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8l7 3.5-7 3.5-7-3.5 7-3.5zM4 9.1l7 3.5v7.1l-7-3.5V9.1zm16 7.1l-7 3.5v-7.1l7-3.5v7.1z"/></svg>
+            <span class="tech-name">Node.js</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+            <span class="tech-name">Git</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up delay-1">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="tech-name">GitHub</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up delay-2">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M8 2h8a4 4 0 014 4v12a4 4 0 01-4 4H8a4 4 0 01-4-4V6a4 4 0 014-4zm4 3a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/></svg>
+            <span class="tech-name">Figma</span>
+          </div>
+
+          <div class="tech-card reveal reveal-scale-up delay-3">
+            <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z"/></svg>
+            <span class="tech-name">MongoDB</span>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. CONTACT SECTION
+       ========================================================================== -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <div class="contact-info-col">
+            <h2 class="contact-big-title reveal reveal-fade-up">Let's Build Together</h2>
+            
+            <p class="contact-subtext reveal reveal-fade-up delay-1">
+              Have an idea, project, or collaboration in mind? Send me a message and let's create something clean, modern, and impactful together.
+            </p>
+
+            <div class="contact-cards-stack reveal reveal-fade-up delay-2">
+              <div class="contact-info-card">
+                <div class="contact-icon-box">✉</div>
+                <div>
+                  <div class="contact-card-label">EMAIL ME</div>
+                  <div class="contact-card-val">tharanik@gmail.com</div>
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-icon-box">💬</div>
+                <div>
+                  <div class="contact-card-label">WHATSAPP / DIRECT</div>
+                  <div class="contact-card-val">+91 9626747999</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="reveal reveal-slide-right delay-2">
+            <form id="contact-form" class="contact-form-glass">
+              
+              <div class="form-group">
+                <label for="user-name" class="form-label">YOUR NAME</label>
+                <input type="text" id="user-name" class="form-input" placeholder="e.g. Alex Morgan" required>
+              </div>
+
+              <div class="form-group">
+                <label for="user-email" class="form-label">YOUR EMAIL</label>
+                <input type="email" id="user-email" class="form-input" placeholder="alex@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="user-message" class="form-label">PROJECT DETAILS</label>
+                <textarea id="user-message" class="form-textarea" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+              </div>
+
+              <div id="form-status-msg" class="form-status-msg"></div>
+
+              <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; justify-content: center;">
+                <span>SEND MESSAGE</span>
+                <svg class="btn-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+     9. FOOTER
+     ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-follow-heading">FOLLOW ME</div>
+
+      <div class="footer-social-row">
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" class="social-icon-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/tk255399-png" target="_blank" class="social-icon-btn" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com" target="_blank" class="social-icon-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://telegram.org" target="_blank" class="social-icon-btn" aria-label="Telegram">
+          <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm5.262 7.172c.112.005.372.03.568.188.196.158.27.373.29.437.02.064.07.3.024.582-.24 1.488-1.258 7.394-1.776 10.156-.22 1.17-.65 1.564-1.066 1.602-.906.084-1.594-.6-2.472-1.176l-3.444-2.332a.807.807 0 0 1-.03-1.294c.82-.782 1.796-1.748 2.67-2.61.182-.18.358-.358.536-.534.204-.202.408-.406.602-.614.152-.164.07-.386-.118-.386a.825.825 0 0 0-.256.044c-.752.28-4.228 2.584-5.326 3.32-.486.326-.93.486-1.334.474-.444-.014-1.3-.256-1.936-.464-.78-.254-1.4-.388-1.344-.82.028-.226.34-.458.934-.696 3.672-1.598 6.122-2.652 7.35-3.162 3.498-1.458 4.224-1.712 4.698-1.722z"/></svg>
+        </a>
+      </div>
+
+      <div class="footer-copyright">
+        © 2026 Tharani K. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/pdf_data.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/showcase.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

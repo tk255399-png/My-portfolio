@@ -1,0 +1,160 @@
+/* ==========================================================================
+   PRINCE SINGH - RESPONSIVE STYLES
+   Breakpoints for Desktop, Tablet, and Mobile
+   ========================================================================== */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+  :root {
+    --max-width: 1400px;
+  }
+}
+
+/* Tablet (Laptop to Medium Screen) */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .hero-serif-phrase {
+    border-left: none;
+    border-top: 2px solid var(--accent-red);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .hero-description {
+    margin: 0 auto;
+  }
+
+  .hero-right-col {
+    align-items: center;
+  }
+
+  .frontend-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .floating-profile-card {
+    margin: 0 auto;
+  }
+
+  .about-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contact-info-col {
+    text-align: center;
+    align-items: center;
+  }
+
+  .contact-cards-stack {
+    width: 100%;
+    max-width: 480px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .nav-links,
+  .digital-clock-pill {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .hero-big-title {
+    font-size: clamp(1.8rem, 8vw, 3.5rem);
+    letter-spacing: -1px;
+  }
+
+  .hero-portrait-frame {
+    left: 0;
+    width: 100%;
+    opacity: 0.45;
+  }
+
+  .section-oversized-heading {
+    font-size: clamp(2.5rem, 9vw, 3.5rem);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .glass-container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .about-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .contact-form-glass {
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-segmented-control {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0.3rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}
+
+/* Extra Small Mobile Screens */
+@media (max-width: 480px) {
+  .hero-serif-phrase {
+    font-size: 1.8rem;
+  }
+
+  .card-image-box {
+    height: 300px;
+  }
+
+  .about-stats-row {
+    grid-template-columns: 1fr;
+  }
+}
