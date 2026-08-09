@@ -1,0 +1,19 @@
+{
+  "name": "tharani-portfolio",
+  "version": "1.0.0",
+  "description": "Tharani K — Creative Frontend Developer Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server . -p 8085 -c-1",
+    "start": "npx -y http-server . -p 8085 -c-1",
+    "serve": "npx -y http-server . -p 8085 -c-1"
+  },
+  "keywords": [
+    "portfolio",
+    "frontend",
+    "developer",
+    "tharani-k"
+  ],
+  "author": "Tharani K",
+  "license": "MIT"
+}
