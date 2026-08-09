@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. 3D Navbar Link Click Animation & Cyber Flash Transition
-  const transitionOverlay = document.getElementById('page-transition-overlay');
+  // 6. 3D Multi-Effect Page Transition Portal & Navbar Click Handler
+  const portalContainer = document.getElementById('page-3d-portal');
   const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
   allNavLinks.forEach(link => {
@@ -100,24 +100,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
       e.preventDefault();
 
-      // Trigger 3D Flip Animation on clicked button
+      // Trigger 3D Button Pulse Animation
       link.classList.remove('nav-3d-flipped');
-      void link.offsetWidth; // Trigger reflow
+      void link.offsetWidth;
       link.classList.add('nav-3d-flipped');
       setTimeout(() => link.classList.remove('nav-3d-flipped'), 550);
 
-      // Trigger Cyber Laser Flash Transition
-      if (transitionOverlay) {
-        transitionOverlay.classList.add('active-flash');
+      // Select specific 3D portal effect based on target section
+      let effectClass = '.portal-warp-home';
+      if (targetId === '#about') effectClass = '.portal-matrix-about';
+      else if (targetId === '#showcase') effectClass = '.portal-cube-projects';
+      else if (targetId === '#contact') effectClass = '.portal-radar-contact';
+
+      if (portalContainer) {
+        // Reset all 3D effects
+        const allEffects = portalContainer.querySelectorAll('.portal-3d-effect');
+        allEffects.forEach(eff => eff.classList.remove('active-effect'));
+
+        const targetEffect = portalContainer.querySelector(effectClass);
+        if (targetEffect) targetEffect.classList.add('active-effect');
+
+        portalContainer.classList.add('active-portal');
+
         setTimeout(() => {
-          transitionOverlay.classList.remove('active-flash');
-        }, 650);
+          portalContainer.classList.remove('active-portal');
+        }, 750);
       }
 
-      // Smooth Scroll after short transition lead-in
+      // Smooth scroll right as 3D portal peaks
       setTimeout(() => {
         targetSection.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
+      }, 300);
     });
   });
 
