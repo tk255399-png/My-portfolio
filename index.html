@@ -17,6 +17,13 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Instant Session Refresh Preloader Bypass -->
+  <script>
+    if (sessionStorage.getItem('tharani_portfolio_has_seen_preloader') === 'true') {
+      document.documentElement.classList.add('fast-loaded');
+    }
+  </script>
 </head>
 <body>
 
@@ -545,22 +552,21 @@
             </p>
 
             <div class="contact-cards-stack reveal reveal-fade-up delay-2">
-              <div class="contact-info-card">
+              <a href="mailto:tharanikanniyappan123@gmail.com" class="contact-info-card contact-card-clickable" title="Send Email">
                 <div class="contact-icon-box">✉</div>
                 <div>
                   <div class="contact-card-label">EMAIL ME</div>
-                  <div class="contact-card-val">tharanik@gmail.com</div>
+                  <div class="contact-card-val">tharanikanniyappan123@gmail.com</div>
                 </div>
-              </div>
+              </a>
 
-              <div class="contact-info-card">
+              <a href="https://wa.me/919626747999" target="_blank" rel="noopener noreferrer" class="contact-info-card contact-card-clickable" title="Chat on WhatsApp">
                 <div class="contact-icon-box">💬</div>
                 <div>
                   <div class="contact-card-label">WHATSAPP / DIRECT</div>
                   <div class="contact-card-val">+91 9626747999</div>
                 </div>
-              </div>
-
+              </a>
             </div>
           </div>
 

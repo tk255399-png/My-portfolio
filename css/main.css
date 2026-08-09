@@ -313,6 +313,15 @@ body {
   transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
 }
 
+/* Fast 0ms preloader suppression for refreshed sessions */
+html.fast-loaded #loader-screen,
+html.fast-loaded body #loader-screen {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 .loader-3d-canvas {
   position: absolute;
   top: 0;
@@ -1984,4 +1993,25 @@ body.loaded #loader-screen {
   font-size: 0.85rem;
   color: var(--text-dim);
   margin-top: 1rem;
+}
+
+/* Clickable Contact Info Cards (Email & WhatsApp) */
+.contact-card-clickable {
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer !important;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.contact-card-clickable:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  border-color: rgba(255, 51, 0, 0.45) !important;
+  box-shadow: 0 12px 30px rgba(255, 51, 0, 0.25) !important;
+}
+
+.contact-card-clickable:hover .contact-icon-box {
+  transform: scale(1.12) rotate(6deg);
+  background: var(--accent-red);
+  color: #ffffff;
+  box-shadow: 0 0 15px var(--accent-red);
 }
