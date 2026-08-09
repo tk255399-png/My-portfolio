@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. Navbar Link Cyber Flash Transition Effect
+  // 6. 3D Navbar Link Click Animation & Cyber Flash Transition
   const transitionOverlay = document.getElementById('page-transition-overlay');
   const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
@@ -99,6 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!targetSection) return;
 
       e.preventDefault();
+
+      // Trigger 3D Flip Animation on clicked button
+      link.classList.remove('nav-3d-flipped');
+      void link.offsetWidth; // Trigger reflow
+      link.classList.add('nav-3d-flipped');
+      setTimeout(() => link.classList.remove('nav-3d-flipped'), 550);
 
       // Trigger Cyber Laser Flash Transition
       if (transitionOverlay) {

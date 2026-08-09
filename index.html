@@ -73,18 +73,42 @@
   <!-- ==========================================================================
      2. NAVIGATION BAR
      ========================================================================== -->
-  <nav id="navbar" class="navbar">
+  <nav id="navbar" class="navbar navbar-3d">
     <div class="container nav-container">
-      <a href="#home" class="nav-brand">
-        THARANI.K<span class="brand-dot"></span>
+      <a href="#home" class="nav-brand nav-brand-3d">
+        <span class="brand-text">THARANI.K</span>
+        <span class="brand-dot-3d"></span>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">HOME</a></li>
-        <li><a href="#about" class="nav-link">ABOUT</a></li>
-        <li><a href="#showcase" class="nav-link">PROJECTS</a></li>
-        <li><a href="#contact" class="nav-link">CONTACT</a></li>
-      </ul>
+      <div class="nav-3d-wrapper">
+        <div class="nav-3d-active-glow"></div>
+        <ul class="nav-links">
+          <li>
+            <a href="#home" class="nav-link nav-link-3d active" data-nav="home">
+              <span class="nav-3d-face front">HOME</span>
+              <span class="nav-3d-face back">HOME</span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link nav-link-3d" data-nav="about">
+              <span class="nav-3d-face front">ABOUT</span>
+              <span class="nav-3d-face back">ABOUT</span>
+            </a>
+          </li>
+          <li>
+            <a href="#showcase" class="nav-link nav-link-3d" data-nav="showcase">
+              <span class="nav-3d-face front">PROJECTS</span>
+              <span class="nav-3d-face back">PROJECTS</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link nav-link-3d" data-nav="contact">
+              <span class="nav-3d-face front">CONTACT</span>
+              <span class="nav-3d-face back">CONTACT</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <div class="nav-right-widget">
         <div class="digital-clock-pill">
