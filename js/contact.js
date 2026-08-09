@@ -1,6 +1,7 @@
 /* ==========================================================================
    THARANI K - EMAIL CONTACT MODULE
    Delivers user contact form messages directly to tharanikanniyappan123@gmail.com
+   Styled with dark red neon theme (Zero Green Color).
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -46,14 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(response => response.json())
       .then(data => {
-        submitBtn.innerHTML = '<span>✓ MESSAGE SENT TO EMAIL!</span>';
-        submitBtn.style.background = '#00ff66';
-        submitBtn.style.color = '#000';
-        submitBtn.style.borderColor = '#00ff66';
+        submitBtn.innerHTML = '<span>✓ MESSAGE DELIVERED!</span>';
+        submitBtn.style.background = 'linear-gradient(135deg, #ff3300 0%, #ff6600 100%)';
+        submitBtn.style.color = '#ffffff';
+        submitBtn.style.borderColor = '#ff3300';
+        submitBtn.style.boxShadow = '0 0 25px rgba(255, 51, 0, 0.6)';
 
         if (statusMsg) {
           statusMsg.classList.add('success');
-          statusMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your message has been delivered to <strong>tharanikanniyappan123@gmail.com</strong>.`;
+          statusMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your message has been sent to Tharani's Email.`;
         }
 
         contactForm.reset();
@@ -65,20 +67,27 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.style.background = '';
           submitBtn.style.color = '';
           submitBtn.style.borderColor = '';
+          submitBtn.style.boxShadow = '';
           if (statusMsg) statusMsg.classList.remove('success');
         }, 6000);
       })
       .catch(error => {
         // Fallback email confirmation
         submitBtn.innerHTML = '<span>✓ MESSAGE SENT!</span>';
+        submitBtn.style.background = 'linear-gradient(135deg, #ff3300 0%, #ff6600 100%)';
+        submitBtn.style.color = '#ffffff';
+
         if (statusMsg) {
           statusMsg.classList.add('success');
-          statusMsg.textContent = '✓ Thank you! Your message has been sent to tharanikanniyappan123@gmail.com.';
+          statusMsg.textContent = `✓ Thank you! Your message has been sent to tharanikanniyappan123@gmail.com.`;
         }
         contactForm.reset();
         setTimeout(() => {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.style.background = '';
+          submitBtn.style.color = '';
+          if (statusMsg) statusMsg.classList.remove('success');
         }, 5000);
       });
     });
