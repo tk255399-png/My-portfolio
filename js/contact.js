@@ -1,7 +1,6 @@
 /* ==========================================================================
    THARANI K - EMAIL CONTACT MODULE
    Delivers user contact form messages directly to tharanikanniyappan123@gmail.com
-   Styled with dark red neon theme (Zero Green Color).
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,19 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span>SENDING TO GMAIL...</span>';
 
-      // Direct Email Delivery via FormSubmit AJAX API
+      const formData = new FormData(contactForm);
+
       fetch('https://formsubmit.co/ajax/tharanikanniyappan123@gmail.com', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message,
-          _subject: `New Portfolio Contact Message from ${name}`
-        })
+        body: formData
       })
       .then(response => response.json())
       .then(data => {
@@ -55,12 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (statusMsg) {
           statusMsg.classList.add('success');
-          statusMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your message has been sent to Tharani's Email.`;
+          statusMsg.innerHTML = `✓ Message sent to <strong>tharanikanniyappan123@gmail.com</strong>!<br><small style="color: #cbd5e1; font-size: 0.78rem; font-weight: normal; margin-top: 4px; display: block;">⚡ Check your Gmail Inbox or Spam folder for the 1-click FormSubmit activation email!</small>`;
         }
 
         contactForm.reset();
 
-        // Reset button after 6 seconds
         setTimeout(() => {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnHTML;
@@ -69,26 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.style.borderColor = '';
           submitBtn.style.boxShadow = '';
           if (statusMsg) statusMsg.classList.remove('success');
-        }, 6000);
+        }, 8000);
       })
       .catch(error => {
-        // Fallback email confirmation
-        submitBtn.innerHTML = '<span>✓ MESSAGE SENT!</span>';
-        submitBtn.style.background = 'linear-gradient(135deg, #ff3300 0%, #ff6600 100%)';
-        submitBtn.style.color = '#ffffff';
-
-        if (statusMsg) {
-          statusMsg.classList.add('success');
-          statusMsg.textContent = `✓ Thank you! Your message has been sent to tharanikanniyappan123@gmail.com.`;
-        }
-        contactForm.reset();
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHTML;
-          submitBtn.style.background = '';
-          submitBtn.style.color = '';
-          if (statusMsg) statusMsg.classList.remove('success');
-        }, 5000);
+        // Fallback form submit
+        contactForm.submit();
       });
     });
   }

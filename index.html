@@ -572,21 +572,24 @@
 
           <!-- Contact Form -->
           <div class="reveal reveal-slide-right delay-2">
-            <form id="contact-form" class="contact-form-glass">
-              
+            <form id="contact-form" action="https://formsubmit.co/tharanikanniyappan123@gmail.com" method="POST" class="contact-form-glass">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" value="New Portfolio Message for Tharani K">
+
               <div class="form-group">
                 <label for="user-name" class="form-label">YOUR NAME</label>
-                <input type="text" id="user-name" class="form-input" placeholder="e.g. Alex Morgan" required>
+                <input type="text" id="user-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
               </div>
 
               <div class="form-group">
                 <label for="user-email" class="form-label">YOUR EMAIL</label>
-                <input type="email" id="user-email" class="form-input" placeholder="alex@example.com" required>
+                <input type="email" id="user-email" name="email" class="form-input" placeholder="alex@example.com" required>
               </div>
 
               <div class="form-group">
                 <label for="user-message" class="form-label">PROJECT DETAILS</label>
-                <textarea id="user-message" class="form-textarea" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+                <textarea id="user-message" name="message" class="form-textarea" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
               </div>
 
               <div id="form-status-msg" class="form-status-msg"></div>
