@@ -264,3 +264,47 @@ function initHero3D(canvas) {
     renderer.setSize(heroSection.clientWidth, heroSection.clientHeight);
   });
 }
+
+// 8. 3D Multi-Theme Switcher Logic with LocalStorage Persistence
+(function initThemeSwitcher() {
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const themeContainer = document.querySelector('.theme-switcher-container');
+  const themeOptions = document.querySelectorAll('.theme-option-btn');
+
+  const savedTheme = localStorage.getItem('tharani_portfolio_theme') || 'theme-red';
+  applyTheme(savedTheme);
+
+  if (themeToggleBtn && themeContainer) {
+    themeToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themeContainer.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!themeContainer.contains(e.target)) {
+        themeContainer.classList.remove('open');
+      }
+    });
+
+    themeOptions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        applyTheme(theme);
+        themeContainer.classList.remove('open');
+      });
+    });
+  }
+
+  function applyTheme(themeName) {
+    document.documentElement.setAttribute('data-theme', themeName);
+    localStorage.setItem('tharani_portfolio_theme', themeName);
+
+    themeOptions.forEach(btn => {
+      if (btn.getAttribute('data-theme') === themeName) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+})();
