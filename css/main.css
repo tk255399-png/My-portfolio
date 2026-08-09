@@ -286,6 +286,30 @@ body {
   font-weight: 400;
 }
 
+.loader-start-btn {
+  margin-top: 1.75rem;
+  padding: 0.85rem 2.5rem !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 2px !important;
+  border-radius: 40px !important;
+  background: linear-gradient(135deg, #ff3300 0%, #ff6600 100%) !important;
+  box-shadow: 0 0 30px rgba(255, 51, 0, 0.4), 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  cursor: pointer !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease !important;
+}
+
+.loader-start-btn:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 0 45px rgba(255, 51, 0, 0.7), 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+}
+
+.loader-start-btn.loading-active {
+  opacity: 0.35;
+  pointer-events: none;
+  transform: scale(0.95) !important;
+}
+
 .loader-bottom-bar {
   position: relative;
   z-index: 10;

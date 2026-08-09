@@ -1,6 +1,6 @@
 /* ==========================================================================
-   THARANI K - 3D ANIMATED LOADER MODULE
-   Handles 3D WebGL Torus Mesh & Floating Particles, progress counter, 
+   THARANI K - 3D ANIMATED LOADER MODULE WITH INTERACTIVE START BUTTON
+   Handles 3D WebGL Torus Mesh & Floating Particles, user-triggered progress counter, 
    and 3D perspective shutter transition
    ========================================================================== */
 
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loaderScreen = document.getElementById('loader-screen');
   const progressBar = document.getElementById('loader-progress-bar');
   const counterText = document.getElementById('loader-counter');
+  const startBtn = document.getElementById('loader-start-btn');
   const body = document.body;
 
   // --- THREE.JS 3D PRELOADER ANIMATION ---
@@ -17,33 +18,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let progress = 0;
-  const interval = setInterval(() => {
-    // Increment progress smoothly
-    progress += Math.floor(Math.random() * 8) + 4;
+  let isLoadingStarted = false;
 
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
+  if (progressBar) progressBar.style.width = '0%';
+  if (counterText) counterText.textContent = '0%';
 
-      if (progressBar) progressBar.style.width = '100%';
-      if (counterText) counterText.textContent = '100%';
+  function startLoadingProcess() {
+    if (isLoadingStarted) return;
+    isLoadingStarted = true;
 
-      // Trigger 3D Exit & Shutter Reveal
-      setTimeout(() => {
-        if (loaderScreen) loaderScreen.classList.add('exiting');
-        
-        setTimeout(() => {
-          body.classList.add('loaded');
-          if (window.initHeroAnimations) {
-            window.initHeroAnimations();
-          }
-        }, 600);
-      }, 400);
-    } else {
-      if (progressBar) progressBar.style.width = `${progress}%`;
-      if (counterText) counterText.textContent = `${progress}%`;
+    if (startBtn) {
+      startBtn.classList.add('loading-active');
+      startBtn.disabled = true;
     }
-  }, 50);
+
+    const interval = setInterval(() => {
+      // Increment progress smoothly
+      progress += Math.floor(Math.random() * 8) + 4;
+
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+
+        if (progressBar) progressBar.style.width = '100%';
+        if (counterText) counterText.textContent = '100%';
+
+        // Trigger 3D Exit & Shutter Reveal
+        setTimeout(() => {
+          if (loaderScreen) loaderScreen.classList.add('exiting');
+          
+          setTimeout(() => {
+            body.classList.add('loaded');
+            if (window.initHeroAnimations) {
+              window.initHeroAnimations();
+            }
+          }, 600);
+        }, 400);
+      } else {
+        if (progressBar) progressBar.style.width = `${progress}%`;
+        if (counterText) counterText.textContent = `${progress}%`;
+      }
+    }, 45);
+  }
+
+  // User click on START button triggers the loading sequence
+  if (startBtn) {
+    startBtn.addEventListener('click', startLoadingProcess);
+  } else {
+    // Fallback if button isn't present
+    setTimeout(startLoadingProcess, 500);
+  }
 });
 
 // Three.js 3D WebGL Mesh & Particle Scene
