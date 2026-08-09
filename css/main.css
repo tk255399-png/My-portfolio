@@ -131,76 +131,176 @@ body {
    1. Intro / Loading Screen
    ========================================================================== */
 
+/* ==========================================================================
+   0. Page Transition Cyber Laser Overlay
+   ========================================================================== */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.page-transition-overlay.active-flash {
+  opacity: 1;
+}
+
+.transition-beam {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 200%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff3300, #ffaa00, #ffffff, transparent);
+  box-shadow: 0 0 30px #ff3300, 0 0 60px #ff3300;
+  transform: translateY(-50%) rotate(-5deg);
+}
+
+.page-transition-overlay.active-flash .transition-beam {
+  animation: laserSweep 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes laserSweep {
+  0% { left: -100%; opacity: 0; }
+  30% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.transition-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 80vw;
+  height: 80vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 51, 0, 0.25) 0%, rgba(255, 102, 0, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-transition-overlay.active-flash .transition-pulse {
+  animation: shockwavePulse 0.6s ease-out forwards;
+}
+
+@keyframes shockwavePulse {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+/* ==========================================================================
+   1. Intro / Loading Screen with 3D Canvas
+   ========================================================================== */
+
 #loader-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #020203;
+  background-color: #020204;
   z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 3rem 2rem;
+  overflow: hidden;
   transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
 }
 
+.loader-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .loader-top-bar {
+  position: relative;
+  z-index: 10;
   display: flex;
   gap: 0.75rem;
   align-items: center;
 }
 
 .loader-top-bar .loader-icon-btn {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--bg-glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-gray);
-  font-size: 0.8rem;
+  color: var(--accent-red);
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .loader-content {
+  position: relative;
+  z-index: 10;
   text-align: center;
 }
 
 .loader-subtitle {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   color: var(--accent-red);
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
 }
 
 .loader-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   color: var(--text-white);
   text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(255, 51, 0, 0.3);
+}
+
+.title-accent {
+  color: var(--accent-red);
+}
+
+.loader-tagline {
+  font-size: 0.8rem;
+  color: var(--text-gray);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+  font-weight: 400;
 }
 
 .loader-bottom-bar {
+  position: relative;
+  z-index: 10;
   width: 100%;
-  max-width: 450px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .loader-progress-track {
   width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
   overflow: hidden;
   position: relative;
 }
@@ -208,32 +308,37 @@ body {
 .loader-progress-bar {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
-  box-shadow: 0 0 12px var(--accent-red);
-  transition: width 0.1s linear;
+  background: linear-gradient(90deg, #ff3300, #ff9900, #ffffff);
+  box-shadow: 0 0 15px #ff3300;
+  transition: width 0.08s linear;
 }
 
 .loader-counter-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
 .loader-counter {
   font-family: monospace;
   color: var(--text-white);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 /* Hidden state when loader completes */
-body.loaded #loader-screen {
-  transform: translateY(-100%);
+#loader-screen.exiting {
+  transform: scale(1.08) translateY(-100%);
   opacity: 0;
   pointer-events: none;
+}
+
+body.loaded #loader-screen {
+  display: none;
 }
 
 /* ==========================================================================
@@ -420,6 +525,21 @@ body.loaded #loader-screen {
   align-items: center;
   position: relative;
   overflow: hidden;
+}
+
+.hero-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-grid {

@@ -27,10 +27,19 @@
   <!-- Custom Cursor Spotlight Follower -->
   <div id="cursor-spotlight"></div>
 
+  <!-- Page Transition Laser Beam Overlay -->
+  <div id="page-transition-overlay" class="page-transition-overlay">
+    <div class="transition-beam"></div>
+    <div class="transition-pulse"></div>
+  </div>
+
   <!-- ==========================================================================
-     1. INTRO / LOADING SCREEN
+     1. INTRO / LOADING SCREEN WITH 3D WEBGL ANIMATION
      ========================================================================== -->
   <div id="loader-screen">
+    <!-- 3D Interactive WebGL Canvas -->
+    <canvas id="loader-3d-canvas" class="loader-3d-canvas"></canvas>
+
     <div class="loader-top-bar">
       <div class="loader-icon-btn">★</div>
       <div class="loader-icon-btn">✦</div>
@@ -38,8 +47,9 @@
     </div>
 
     <div class="loader-content">
-      <p class="loader-subtitle">Welcome to my</p>
-      <h1 class="loader-title">Portfolio Website</h1>
+      <p class="loader-subtitle">Creative Web Engineer & UI Designer</p>
+      <h1 class="loader-title">THARANI<span class="title-accent">.K</span></h1>
+      <p class="loader-tagline">Initializing 3D Interactive Experience</p>
     </div>
 
     <div class="loader-bottom-bar">
@@ -47,7 +57,7 @@
         <div id="loader-progress-bar" class="loader-progress-bar"></div>
       </div>
       <div class="loader-counter-row">
-        <span>INITIALIZING EXPERIENCE</span>
+        <span>LOADING CORE ENGINE</span>
         <span id="loader-counter" class="loader-counter">0%</span>
       </div>
     </div>
@@ -96,6 +106,9 @@
        3. HERO SECTION
        ========================================================================== -->
     <section id="home" class="hero-section">
+      <!-- Interactive 3D Background Canvas -->
+      <canvas id="hero-3d-canvas" class="hero-3d-canvas"></canvas>
+
       <div class="container">
         <div class="hero-grid">
           
@@ -584,6 +597,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/pdf_data.js"></script>
   <script src="js/loader.js"></script>
   <script src="js/main.js"></script>
