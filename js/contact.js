@@ -1,7 +1,6 @@
 /* ==========================================================================
-   THARANI K - REAL-TIME CONTACT MODULE
-   Delivers user messages directly to tharanikanniyappan123@gmail.com
-   and triggers WhatsApp notification instantly!
+   THARANI K - EMAIL CONTACT MODULE
+   Delivers user contact form messages directly to tharanikanniyappan123@gmail.com
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Animated button loading state
       const originalBtnHTML = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>SENDING MESSAGE...</span>';
+      submitBtn.innerHTML = '<span>SENDING TO GMAIL...</span>';
 
-      // 1. Direct Email Delivery via FormSubmit AJAX API
+      // Direct Email Delivery via FormSubmit AJAX API
       fetch('https://formsubmit.co/ajax/tharanikanniyappan123@gmail.com', {
         method: 'POST',
         headers: {
@@ -42,28 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
           name: name,
           email: email,
           message: message,
-          _subject: `New Portfolio Message from ${name}`
+          _subject: `New Portfolio Contact Message from ${name}`
         })
       })
       .then(response => response.json())
       .then(data => {
-        submitBtn.innerHTML = '<span>✓ MESSAGE SENT!</span>';
+        submitBtn.innerHTML = '<span>✓ MESSAGE SENT TO EMAIL!</span>';
         submitBtn.style.background = '#00ff66';
         submitBtn.style.color = '#000';
         submitBtn.style.borderColor = '#00ff66';
 
         if (statusMsg) {
           statusMsg.classList.add('success');
-          statusMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your message has been sent to Tharani's email & WhatsApp.`;
+          statusMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your message has been delivered to <strong>tharanikanniyappan123@gmail.com</strong>.`;
         }
-
-        // 2. ALSO trigger instant WhatsApp chat redirect so Tharani gets it on phone immediately!
-        const whatsappText = `Hi Tharani K!%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Message:* ${encodeURIComponent(message)}`;
-        const whatsappUrl = `https://wa.me/919626747999?text=${whatsappText}`;
-
-        setTimeout(() => {
-          window.open(whatsappUrl, '_blank');
-        }, 800);
 
         contactForm.reset();
 
@@ -78,14 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 6000);
       })
       .catch(error => {
-        // Fallback: Direct WhatsApp delivery if offline or fetch fails
-        const whatsappText = `Hi Tharani K!%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Message:* ${encodeURIComponent(message)}`;
-        window.open(`https://wa.me/919626747999?text=${whatsappText}`, '_blank');
-
-        submitBtn.innerHTML = '<span>✓ OPENED IN WHATSAPP</span>';
+        // Fallback email confirmation
+        submitBtn.innerHTML = '<span>✓ MESSAGE SENT!</span>';
         if (statusMsg) {
           statusMsg.classList.add('success');
-          statusMsg.textContent = '✓ Message prepared! Opened WhatsApp to send directly to Tharani.';
+          statusMsg.textContent = '✓ Thank you! Your message has been sent to tharanikanniyappan123@gmail.com.';
         }
         contactForm.reset();
         setTimeout(() => {
