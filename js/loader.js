@@ -1,7 +1,7 @@
 /* ==========================================================================
-   THARANI K - 3D ANIMATED LOADER MODULE WITH INTERACTIVE START BUTTON
-   Handles 3D WebGL Torus Mesh & Floating Particles, user-triggered progress counter, 
-   and 3D perspective shutter transition
+   THARANI K - 3D ANIMATED LOADER MODULE WITH SESSION STORAGE CHECK
+   Handles 3D WebGL Preloader, user-triggered START button, and bypasses
+   the preloader on page refresh for returning session visitors.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const counterText = document.getElementById('loader-counter');
   const startBtn = document.getElementById('loader-start-btn');
   const body = document.body;
+
+  // Check if user has already experienced the preloader in this session
+  const hasSeenPreloader = sessionStorage.getItem('tharani_portfolio_has_seen_preloader');
+
+  if (hasSeenPreloader === 'true') {
+    // Bypass loader immediately on page refresh / internal navigation
+    if (loaderScreen) loaderScreen.style.display = 'none';
+    body.classList.add('loaded');
+    if (window.initHeroAnimations) {
+      window.initHeroAnimations();
+    }
+    return;
+  }
 
   // --- THREE.JS 3D PRELOADER ANIMATION ---
   const canvas = document.getElementById('loader-3d-canvas');
@@ -42,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (progressBar) progressBar.style.width = '100%';
         if (counterText) counterText.textContent = '100%';
+
+        // Store session flag so refresh skips preloader
+        sessionStorage.setItem('tharani_portfolio_has_seen_preloader', 'true');
 
         // Trigger 3D Exit & Shutter Reveal
         setTimeout(() => {
