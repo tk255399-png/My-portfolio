@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Custom 3D Interactive Cyber Cursor (Replacing Browser Mouse Arrow)
-  const customCursor = document.getElementById('custom-3d-cursor');
+  // 4. Custom 2D Cyber Precision Mouse Pointer
+  const customCursor = document.getElementById('custom-cyber-cursor');
   const spotlight = document.getElementById('cursor-spotlight');
 
   if (customCursor) {
@@ -88,10 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smart Hide on Scroll Down & Reveal on Scroll Up
     if (navbar3d) {
       if (currentScrollY > lastScrollY && currentScrollY > 120) {
-        // Scroll DOWN -> Hide navbar
         navbar3d.classList.add('nav-hidden');
       } else if (currentScrollY < lastScrollY) {
-        // Scroll UP (even a little) -> Reveal navbar!
         navbar3d.classList.remove('nav-hidden');
       }
 
@@ -124,8 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. Full-Screen 3D Transition Portal on ALL Navbar Link Clicks
-  const portalContainer = document.getElementById('page-3d-portal');
+  // 6. Smooth Navbar Direct Scrolling to Related Topics
   const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
   allNavLinks.forEach(link => {
@@ -138,49 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       e.preventDefault();
 
-      // Instantly reveal navbar if hidden so user sees button animation
       if (navbar3d) navbar3d.classList.remove('nav-hidden');
 
-      // Trigger 3D Button Pulse Animation
-      link.classList.remove('nav-3d-flipped');
-      void link.offsetWidth;
-      link.classList.add('nav-3d-flipped');
-      setTimeout(() => link.classList.remove('nav-3d-flipped'), 550);
-
-      // Select specific full-screen 3D portal effect based on target section
-      let effectClass = '.portal-warp-home';
-      if (targetId === '#about' || targetId === '#skills') effectClass = '.portal-matrix-about';
-      else if (targetId === '#showcase' || targetId === '#experience') effectClass = '.portal-cube-projects';
-      else if (targetId === '#contact') effectClass = '.portal-radar-contact';
-
-      if (portalContainer) {
-        // Reset all full-screen 3D effects
-        const allEffects = portalContainer.querySelectorAll('.portal-3d-effect');
-        allEffects.forEach(eff => eff.classList.remove('active-effect'));
-
-        const targetEffect = portalContainer.querySelector(effectClass);
-        if (targetEffect) targetEffect.classList.add('active-effect');
-
-        // Activate Full-Screen 3D Transition Overlay (100vw x 100vh)
-        portalContainer.classList.add('active-portal');
-
-        setTimeout(() => {
-          portalContainer.classList.remove('active-portal');
-        }, 850);
-      }
-
-      // Smooth scroll to target topic right as the full-screen 3D portal animation peaks
-      setTimeout(() => {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-      }, 350);
+      targetSection.scrollIntoView({ behavior: 'smooth' });
     });
   });
-
-  // 7. Interactive 3D Hero Background Canvas Initialization
-  const heroCanvas = document.getElementById('hero-3d-canvas');
-  if (heroCanvas && typeof THREE !== 'undefined') {
-    initHero3D(heroCanvas);
-  }
 
   // 6. Direct Instant Memory-Decoded PDF Download Handler (Zero Tabs / Zero Navigation)
   const downloadBtn = document.getElementById('download-resume-btn');
