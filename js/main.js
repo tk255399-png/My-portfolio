@@ -308,3 +308,34 @@ function initHero3D(canvas) {
     });
   }
 })();
+
+// 9. Hero Image-Only Mouse Hover Shake & 3D Tilt Logic
+(function initHeroImageTilt() {
+  const portraitCard = document.getElementById('hero-portrait-card');
+  if (!portraitCard) return;
+
+  portraitCard.addEventListener('mouseenter', () => {
+    portraitCard.classList.add('mouse-over-active');
+  });
+
+  portraitCard.addEventListener('mousemove', (e) => {
+    const rect = portraitCard.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Calculate tilt angles relative ONLY to image boundaries
+    const rotateX = ((y - centerY) / centerY) * -16;
+    const rotateY = ((x - centerX) / centerX) * 16;
+
+    portraitCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(18px)`;
+  });
+
+  portraitCard.addEventListener('mouseleave', () => {
+    portraitCard.classList.remove('mouse-over-active');
+    // Smooth reset when cursor leaves the image boundaries
+    portraitCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+  });
+})();

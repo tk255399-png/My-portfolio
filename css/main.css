@@ -826,9 +826,13 @@ body.loaded #loader-screen {
   width: 100%;
   height: 100%;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: auto;
   overflow: hidden;
   border-radius: 24px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+  will-change: transform;
+  cursor: pointer;
 }
 
 .hero-portrait-frame::after {
@@ -848,6 +852,35 @@ body.loaded #loader-screen {
   object-position: center 15%;
   opacity: 0.85;
   filter: contrast(1.1) brightness(0.95);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+}
+
+/* Mouse Over Shake/Tilt Active Class */
+.hero-portrait-frame.mouse-over-active {
+  transition: transform 0.08s ease-out !important;
+}
+
+.hero-portrait-frame.mouse-over-active .hero-portrait-img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Automatic Color-Changing Animated Gradient Text for "Frontend Developer" */
+.animated-gradient-text {
+  background: linear-gradient(135deg, #ff3300 0%, #ff9900 25%, #00f0ff 50%, #a855f7 75%, #ff3300 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbowGradientShift 4s ease infinite;
+  display: inline-block;
+  font-weight: 800;
+}
+
+@keyframes rainbowGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero-right-col {
