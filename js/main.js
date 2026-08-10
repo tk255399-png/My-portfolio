@@ -54,11 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Custom Mouse Cursor Spotlight Follower
+  // 4. Custom 3D Interactive Cyber Cursor (Replacing Browser Mouse Arrow)
+  const customCursor = document.getElementById('custom-3d-cursor');
   const spotlight = document.getElementById('cursor-spotlight');
-  if (spotlight && window.innerWidth > 768) {
+
+  if (customCursor) {
     window.addEventListener('mousemove', (e) => {
-      spotlight.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      customCursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      if (spotlight) {
+        spotlight.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      }
+    });
+
+    window.addEventListener('mousedown', () => {
+      customCursor.classList.add('clicking');
+    });
+
+    window.addEventListener('mouseup', () => {
+      customCursor.classList.remove('clicking');
     });
   }
 
