@@ -1863,12 +1863,26 @@ body.loaded #loader-screen {
   color: var(--text-white);
 }
 
+.tech-section,
+.contact-section {
+  width: 100%;
+  display: block;
+  position: relative;
+  clear: both;
+  box-sizing: border-box;
+}
+
+.tech-section {
+  padding: 6rem 0;
+}
+
 /* ==========================================================================
    10. Contact Section
    ========================================================================== */
 
 .contact-section {
-  padding: 8rem 0;
+  padding: 6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .contact-grid {
