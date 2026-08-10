@@ -2266,6 +2266,23 @@ body.loaded #loader-screen {
   color: #ff9900;
 }
 
+/* Hardware Acceleration & Ultra-Smooth Scrolling Performance */
+html, body {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reveal,
+.project-card,
+.skills-domain-card,
+.timeline-card,
+.hero-portrait-frame,
+.navbar-3d {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 /* ==========================================================================
    13. Technical Skills Ecosystem Section (#skills)
    ========================================================================== */
@@ -2277,7 +2294,7 @@ body.loaded #loader-screen {
 
 .skills-domain-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -2288,31 +2305,39 @@ body.loaded #loader-screen {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--bg-glass-border);
   border-radius: 24px;
-  padding: 2rem;
-  transition: all var(--transition-smooth);
+  padding: 2.2rem;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  will-change: transform, opacity;
 }
 
 .skills-domain-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent-red);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-red-glow);
+  transform: translateY(-8px) scale(1.015);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .domain-icon-box {
   width: 48px;
   height: 48px;
   border-radius: 16px;
-  background: rgba(255, 51, 0, 0.1);
-  border: 1px solid rgba(255, 51, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
   margin-bottom: 1.25rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skills-domain-card:hover .domain-icon-box {
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .domain-title {
