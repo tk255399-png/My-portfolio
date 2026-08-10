@@ -62,13 +62,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Active Nav Link Scroll Highlight
+  // 5. Active Nav Link Scroll Highlight & Smart Auto-Hiding/Revealing Navbar
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const navbar3d = document.getElementById('navbar');
+
+  let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    // Smart Hide on Scroll Down & Reveal on Scroll Up
+    if (navbar3d) {
+      if (currentScrollY > lastScrollY && currentScrollY > 120) {
+        // Scroll DOWN -> Hide navbar
+        navbar3d.classList.add('nav-hidden');
+      } else if (currentScrollY < lastScrollY) {
+        // Scroll UP (even a little) -> Reveal navbar!
+        navbar3d.classList.remove('nav-hidden');
+      }
+
+      if (currentScrollY > 50) {
+        navbar3d.classList.add('scrolled');
+      } else {
+        navbar3d.classList.remove('scrolled');
+      }
+    }
+
+    lastScrollY = currentScrollY;
+
+    // Highlight Active Nav Link
     let currentSection = '';
-    const scrollPos = window.scrollY + 200;
+    const scrollPos = currentScrollY + 200;
 
     sections.forEach(section => {
       const top = section.offsetTop;
@@ -86,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. 3D Multi-Effect Page Transition Portal & Navbar Click Handler
+  // 6. Full-Screen 3D Transition Portal on ALL Navbar Link Clicks
   const portalContainer = document.getElementById('page-3d-portal');
   const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
@@ -100,37 +125,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
       e.preventDefault();
 
+      // Instantly reveal navbar if hidden so user sees button animation
+      if (navbar3d) navbar3d.classList.remove('nav-hidden');
+
       // Trigger 3D Button Pulse Animation
       link.classList.remove('nav-3d-flipped');
       void link.offsetWidth;
       link.classList.add('nav-3d-flipped');
       setTimeout(() => link.classList.remove('nav-3d-flipped'), 550);
 
-      // Select specific 3D portal effect based on target section
+      // Select specific full-screen 3D portal effect based on target section
       let effectClass = '.portal-warp-home';
-      if (targetId === '#about') effectClass = '.portal-matrix-about';
-      else if (targetId === '#showcase') effectClass = '.portal-cube-projects';
+      if (targetId === '#about' || targetId === '#skills') effectClass = '.portal-matrix-about';
+      else if (targetId === '#showcase' || targetId === '#experience') effectClass = '.portal-cube-projects';
       else if (targetId === '#contact') effectClass = '.portal-radar-contact';
 
       if (portalContainer) {
-        // Reset all 3D effects
+        // Reset all full-screen 3D effects
         const allEffects = portalContainer.querySelectorAll('.portal-3d-effect');
         allEffects.forEach(eff => eff.classList.remove('active-effect'));
 
         const targetEffect = portalContainer.querySelector(effectClass);
         if (targetEffect) targetEffect.classList.add('active-effect');
 
+        // Activate Full-Screen 3D Transition Overlay (100vw x 100vh)
         portalContainer.classList.add('active-portal');
 
         setTimeout(() => {
           portalContainer.classList.remove('active-portal');
-        }, 750);
+        }, 850);
       }
 
-      // Smooth scroll right as 3D portal peaks
+      // Smooth scroll to target topic right as the full-screen 3D portal animation peaks
       setTimeout(() => {
         targetSection.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+      }, 350);
     });
   });
 
