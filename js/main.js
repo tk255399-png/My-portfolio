@@ -300,7 +300,7 @@ function initHero3D(canvas) {
   const themeContainer = document.querySelector('.theme-switcher-container');
   const themeOptions = document.querySelectorAll('.theme-option-btn');
 
-  const savedTheme = localStorage.getItem('tharani_portfolio_theme') || 'theme-red';
+  const savedTheme = localStorage.getItem('tharani_portfolio_theme') || 'theme-dark';
   applyTheme(savedTheme);
 
   if (themeToggleBtn && themeContainer) {
