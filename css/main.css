@@ -854,25 +854,45 @@ html, body, a, button, input, select, textarea {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: flex-end;
   min-height: 80vh;
 }
 
 .hero-left-col {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.hero-greeting-badge {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--accent-red);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero-right-col {
   position: relative;
   min-height: 75vh;
   height: 100%;
   width: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   overflow: visible;
 }
 
-/* Hero Portrait Image Frame - BIG Image Covering Half of the Page */
+/* Hero Portrait Image Frame - Right Side Matching Img 1 */
 .hero-portrait-frame {
   position: relative;
   width: 100%;
@@ -880,7 +900,7 @@ html, body, a, button, input, select, textarea {
   min-height: 75vh;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 1;
   pointer-events: auto;
   overflow: visible;
@@ -897,12 +917,12 @@ html, body, a, button, input, select, textarea {
   width: 100%;
   height: 80vh;
   max-height: 820px;
-  object-fit: cover;
-  object-position: center 10%;
+  object-fit: contain;
+  object-position: right bottom;
   opacity: 1;
-  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.9));
-  transform: scale(1.08);
-  transform-origin: center top;
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95));
+  transform: scale(1.35);
+  transform-origin: right bottom;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
 }
 
@@ -913,7 +933,7 @@ html, body, a, button, input, select, textarea {
 
 .hero-portrait-frame.mouse-over-active .hero-portrait-img {
   opacity: 1;
-  transform: scale(1.12);
+  transform: scale(1.38);
 }
 
 /* Dynamic Theme-Adaptive Animated Gradient Text for "Frontend Developer" */
