@@ -1841,15 +1841,15 @@ body.loaded #loader-screen {
 }
 
 .tech-icon {
-  width: 36px;
-  height: 36px;
-  fill: var(--text-white);
-  transition: transform var(--transition-fast);
+  width: 44px;
+  height: 44px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
 }
 
 .tech-card:hover .tech-icon {
-  transform: scale(1.15);
-  fill: var(--accent-red);
+  transform: scale(1.18);
+  filter: drop-shadow(0 6px 15px rgba(255, 255, 255, 0.3));
 }
 
 .tech-name {
