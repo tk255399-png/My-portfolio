@@ -841,23 +841,13 @@ body.loaded #loader-screen {
   cursor: pointer;
 }
 
-.hero-portrait-frame::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: 
-    linear-gradient(180deg, rgba(3, 3, 4, 0.2) 0%, rgba(3, 3, 4, 0.75) 100%),
-    radial-gradient(circle at 50% 40%, transparent 40%, rgba(3, 3, 4, 0.6) 100%);
-  pointer-events: none;
-}
-
 .hero-portrait-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
-  opacity: 0.85;
-  filter: contrast(1.1) brightness(0.95);
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 1;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
 }
 

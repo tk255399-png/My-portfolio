@@ -343,12 +343,24 @@ function initHero3D(canvas) {
   const portraitCard = document.getElementById('hero-portrait-card');
   if (!portraitCard) return;
 
+  function resetTilt() {
+    portraitCard.classList.remove('mouse-over-active');
+    portraitCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
+  }
+
   portraitCard.addEventListener('mouseenter', () => {
     portraitCard.classList.add('mouse-over-active');
   });
 
   portraitCard.addEventListener('mousemove', (e) => {
     const rect = portraitCard.getBoundingClientRect();
+    
+    // Strict boundary check: If cursor moves outside card bounds, reset immediately
+    if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+      resetTilt();
+      return;
+    }
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
@@ -356,15 +368,12 @@ function initHero3D(canvas) {
     const centerY = rect.height / 2;
     
     // Calculate tilt angles relative ONLY to image boundaries
-    const rotateX = ((y - centerY) / centerY) * -16;
-    const rotateY = ((x - centerX) / centerX) * 16;
+    const rotateX = ((y - centerY) / centerY) * -14;
+    const rotateY = ((x - centerX) / centerX) * 14;
 
-    portraitCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(18px)`;
+    portraitCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(12px) scale(1.02)`;
   });
 
-  portraitCard.addEventListener('mouseleave', () => {
-    portraitCard.classList.remove('mouse-over-active');
-    // Smooth reset when cursor leaves the image boundaries
-    portraitCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-  });
+  portraitCard.addEventListener('mouseleave', resetTilt);
+  document.addEventListener('mouseleave', resetTilt);
 })();
