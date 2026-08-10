@@ -865,19 +865,20 @@ body.loaded #loader-screen {
   transform: scale(1.05);
 }
 
-/* Automatic Color-Changing Animated Gradient Text for "Frontend Developer" */
+/* Dynamic Theme-Adaptive Animated Gradient Text for "Frontend Developer" */
 .animated-gradient-text {
-  background: linear-gradient(135deg, #ff3300 0%, #ff9900 25%, #00f0ff 50%, #a855f7 75%, #ff3300 100%);
-  background-size: 300% 300%;
+  background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-orange) 35%, var(--text-white) 65%, var(--accent-red) 100%);
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: rainbowGradientShift 4s ease infinite;
+  animation: themeGradientShift 4s ease infinite;
   display: inline-block;
   font-weight: 800;
+  transition: all 0.4s ease;
 }
 
-@keyframes rainbowGradientShift {
+@keyframes themeGradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
